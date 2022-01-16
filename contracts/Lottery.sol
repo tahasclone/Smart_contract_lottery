@@ -12,7 +12,7 @@ contract Lottery is VRFConsumerBase, Ownable{
     uint256 public usdEntryFee;
     AggregatorV3Interface internal ethUsdPriceFeed;
     uint256 public randomness;
-    address payable recentWinner;
+    address payable public recentWinner;
 
     enum LOTTERY_STATE {
         OPEN,
