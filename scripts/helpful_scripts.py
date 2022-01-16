@@ -2,7 +2,7 @@ from brownie import accounts, config, network, MockV3Aggregator, Contract, VRFCo
 from web3 import Web3
 
 
-FORKED_LOCAL_ENVIRONMENT = ["mainnet-fork-dev"]
+FORKED_LOCAL_ENVIRONMENT = ["mainnet-fork", "mainnet-fork-dev"]
 LOCAL_BLOCKCHAIN_ENVIRONMENTS = ["development", "ganache-local"]
 
 DECIMALS = 8
@@ -15,7 +15,7 @@ def get_account(index=None, id=None):
     if id:
         return accounts.load(id)
     
-    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS or network.show_active() in  FORKED_LOCAL_ENVIRONMENT:
+    if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS or network.show_active() in FORKED_LOCAL_ENVIRONMENT:
         return accounts[0]
 
     return accounts.add(config["wallets"]["from_key"])
